@@ -3,12 +3,18 @@ const app = new express();
 
 let loginDetails = [];
 
+let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"]
+
 app.get("/",(req,res)=>{
     res.send("Welcome to the express server")
 })
 
 app.get("/loginDetails",(req,res)=>{
     res.send(JSON.stringify(loginDetails));
+})
+
+app.get("/fetchMonth/:num",(req,res)=>{
+    res.send((months[req.params.num-1]))
 })
 
 app.post("/login/:name",(req,res)=>{
